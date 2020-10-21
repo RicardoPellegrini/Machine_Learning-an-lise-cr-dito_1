@@ -66,7 +66,7 @@ previsores = base.iloc[:, 1:4].values
 classe = base.iloc[:, 4].values
 
 
-# In[11]:
+# In[9]:
 
 
 # Substituindo os valores missing pela média de cada coluna
@@ -78,7 +78,7 @@ imputer.fit(previsores[:, 0:3])
 previsores[:, 0:3] = imputer.transform(previsores[:, 0:3])
 
 
-# In[12]:
+# In[10]:
 
 
 ## Fazendo o escalonamento (normalização) dos atributos
@@ -92,4 +92,17 @@ previsores = scaler.fit_transform(previsores)
 # from sklearn.preprocessing import MinMaxScaler
 # scaler = MinMaxScaler()
 # previsores = scaler.fit_transform(previsores)
+
+
+# In[11]:
+
+
+# Dividindo os dados em treino e teste
+from sklearn.model_selection import train_test_split
+
+
+# In[12]:
+
+
+previsores_train, previsores_test, classe_train, classe_test = train_test_split(previsores, classe, test_size=0.25, random_state=0)
 
